@@ -1,5 +1,7 @@
 
-Source: https://github.com/bezkoder/react-jwt-auth
+Source: 
+- https://github.com/bezkoder/react-jwt-auth
+- https://mherman.org/blog/dockerizing-a-react-app/
 
 
 
