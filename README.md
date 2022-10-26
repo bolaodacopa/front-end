@@ -3,6 +3,9 @@ Source:
 - https://github.com/bezkoder/react-jwt-auth
 - https://mherman.org/blog/dockerizing-a-react-app/
 
+Command:
+sudo docker build -f Dockerfile.prod -t sample:prod . &
+sudo docker-compose -f docker-compose.prod.yml up -d --build &
 
 
 
