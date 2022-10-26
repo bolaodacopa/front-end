@@ -139,7 +139,7 @@ class GrupoPartida extends Component {
                                 }}
                             >                        
                                 {this.state.content.map((item, index) => {            
-                                    return <Partida match={item.match} bet={item.bet}  key={index}/>
+                                    return <Partida match={item.match} bet={item.bet} result={item.result}  key={index}/>
                                 })}
 
                             {!this.state.successful && !this.state.finishedbets && (        
