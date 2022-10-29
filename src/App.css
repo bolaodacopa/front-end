@@ -38,3 +38,7 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+input[type=number]{
+  width: 50px;
+}

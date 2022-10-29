@@ -120,8 +120,7 @@ class GrupoPartida extends Component {
     render() {
 
         return (            
-                <div class="col-sm-6">
-                         
+                <div class="col-sm-6 m-auto">
                     <div class="card">
 
                     {this.state.matchexist && this.state.loadmatches && (   

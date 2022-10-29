@@ -35,13 +35,13 @@ function Partida(props) {
     <div class="row bg-white align-items-center ml-0 mr-0 py-2">
         <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
           <div class="text-center text-lg-left">
-            <div class="d-block d-lg-flex align-items-center">
-              <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                <img src={match.hometeam.flag} alt="Image"></img>
-              </div>
-              <div class="text">
-                <h6 class="h6 small mb-0 text-black">{match.hometeam.name}</h6>
-              </div>
+            <div class="d-block">
+                <div class="image image-small mb-3 mb-lg-0 mr-lg-3">
+                  <img src={match.hometeam.flag} alt="Image"></img>
+                </div>
+                <div class="text">
+                  <h6 class="h6 small mb-0 text-black">{match.hometeam.name}</h6>
+                </div>
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@ function Partida(props) {
                 min="0" 
                 max="99"
                 maxLength="2"
-                size="2"
+                size="1"
                 onInput={(event)=>event.target.value=event.target.value.slice(0,event.target.maxLength)}                 
                 class="text-center"
                 matchcode={match.matchcode}
@@ -135,7 +135,7 @@ function Partida(props) {
                 min="0" 
                 max="99"
                 maxLength="2"
-                size="2"
+                size="1"
                 onInput={(event)=>event.target.value=event.target.value.slice(0,event.target.maxLength)}                 
                 class="text-center"
                 matchcode={match.matchcode}
@@ -146,14 +146,14 @@ function Partida(props) {
           </div>              
         </div>
 
-        <div class="col-md-4 col-lg-4 text-center text-lg-right">
-          <div class="">
-            <div class="d-block d-lg-flex align-items-center">
-              <div class="text order-1 w-100">
-                <h6 class="h6 small mb-0 text-black">{match.awayteam.name}</h6>
-              </div>
-              <div class="image ml-lg-3 mb-3 mb-lg-0 order-2">
+        <div class="col-md-4 col-lg-4">
+          <div class=" text-center text-lg-right">
+            <div class="d-block">
+              <div class="image image-small">
                 <img src={match.awayteam.flag} alt="Image"></img>
+              </div>              
+              <div class="text">
+                <h6 class="h6 small mb-0 text-black">{match.awayteam.name}</h6>
               </div>                  
             </div>
           </div>
