@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import BetService from "../services/bet.service";
 import AuthService from "../services/auth.service";
+import { Link } from "react-router-dom";
+import * as Icon from 'react-bootstrap-icons';
 
 class BetRanking extends Component {
     constructor(props) {
@@ -56,10 +58,12 @@ class BetRanking extends Component {
                                 <div class="card-header text-center">
                                     <h3 class="h6 mb-0 text-black">Ranking</h3>
                                 </div>
+                                <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th class="text-center">#</th>
+                                            <th class="text-center"></th>
                                             <th>Nome</th>
                                             <th class="text-center">Pontos</th>
                                             <th class="text-center">Partidas corretas</th>
@@ -73,7 +77,14 @@ class BetRanking extends Component {
                                             return (
                                                 <tr class={boldtr}>
                                                     <td class="text-center">{item.myrank}</td>
-                                                    <td>{item.name + ' (' + item.username + ')'}</td>
+                                                    <td class="text-center">
+                                                        <Link to={"/aposta/"+item.username}>
+                                                            <Icon.Search color="blue"/>
+                                                        </Link>                                                        
+                                                    </td>
+                                                    <td>
+                                                        {item.name + ' (' + item.username + ')'}
+                                                    </td>
                                                     <td class="text-center">{item.total}</td>
                                                     <td class="text-center">{item.correctmatches}</td>    
                                                 </tr>   
@@ -81,6 +92,7 @@ class BetRanking extends Component {
                                         })}
                                     </tbody>
                                 </table>
+                                </div>
                                 </div>
                             )}                                                                        
                     </div>

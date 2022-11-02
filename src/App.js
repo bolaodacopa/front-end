@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import * as Icon from 'react-bootstrap-icons';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useParams } from "react-router-dom";
+import 'bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.js';
+import $ from 'jquery';
+import Popper from 'popper.js';
 import "./App.css";
 
 import AuthService from "./services/auth.service";
@@ -19,6 +23,7 @@ import BetQuarta from "./components/board-quarta.component";
 import BetSemi from "./components/board-semi.component";
 import BetFinal from "./components/board-final.component";
 import BetRanking from "./components/board-ranking.component";
+import BetAposta from "./components/board-aposta.component";
 
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
@@ -65,96 +70,127 @@ class App extends Component {
     });
   }
 
+
+
+  
   render() {
+    const ApostaComponentWrapper = () => {
+      const { username } = useParams();
+      return <BetAposta username={username} />;
+    };
+
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
     return (
       <div className="backgroundimage">
         <nav className="navbar navbar-expand navbar-dark bg-dark">
+
+        {currentUser && (
+            <div className="d-lg-none">
+              <div className="navbar-nav ml-auto ">
+                <li className="nav-item">
+                  <div className="dropdown">
+                    <button 
+                        className="btn btn-secondary mr-1" 
+                        type="button" 
+                        id="dropdownMenuButton" 
+                        data-toggle="dropdown" 
+                        aria-haspopup="true">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <Link to={"/grupo"} className="dropdown-item">
+                          Grupos
+                        </Link>				  
+                        <Link to={"/oitava"} className="dropdown-item">
+                          Oitavas de final
+                        </Link>
+                        <Link to={"/quarta"} className="dropdown-item">
+                          Quartas de final
+                        </Link>
+                        <Link to={"/semi"} className="dropdown-item">
+                          Semifinais
+                        </Link>
+                        <Link to={"/final"} className="dropdown-item">
+                          Final
+                        </Link>
+                        <Link to={"/ranking"} className="dropdown-item">
+                          Ranking
+                        </Link>
+                        <div class="dropdown-divider"></div>
+                        <Link to={"/home"} className="dropdown-item">
+                          {currentUser.username}
+                        </Link>
+                        <a href="/login" className="dropdown-item" onClick={this.logOut}>
+                          LogOut
+                        </a>
+                    </div>
+                  </div>
+                </li>
+              </div>
+            </div>
+        )}
+
+
           <Link to={"/"} className="navbar-brand">
             BOLAODACOPA.TK
           </Link>
 
           {currentUser && (
-            <div className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link to={"/grupo"} className="nav-link">
-                  Grupos
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to={"/oitava"} className="nav-link">
-                  Oitavas de final
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to={"/quarta"} className="nav-link">
-                  Quartas de final
-                </Link>
-              </li> 
-              <li className="nav-item">
-                <Link to={"/semi"} className="nav-link">
-                  Semifinais
-                </Link>
-              </li> 
-              <li className="nav-item">
-                <Link to={"/final"} className="nav-link">
-                  Final
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to={"/ranking"} className="nav-link">
-                  <Icon.TrophyFill  color="yellow"/> Ranking
-                </Link>
-              </li>                                                              
+            <div>
+            <div className="d-none d-lg-block">
+              <div className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link to={"/grupo"} className="nav-link">
+                    Grupos
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/oitava"} className="nav-link">
+                    Oitavas de final
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/quarta"} className="nav-link">
+                    Quartas de final
+                  </Link>
+                </li> 
+                <li className="nav-item">
+                  <Link to={"/semi"} className="nav-link">
+                    Semifinais
+                  </Link>
+                </li> 
+                <li className="nav-item">
+                  <Link to={"/final"} className="nav-link">
+                    Final
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/ranking"} className="nav-link">
+                    <Icon.TrophyFill  color="yellow"/> Ranking
+                  </Link>
+                </li>                                                              
+              </div>
+            </div>
             </div>
           )}
-{/* 
-          <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
-              </Link>
-            </li>
 
-            {showModeratorBoard && (
-              <li className="nav-item">
-                <Link to={"/mod"} className="nav-link">
-                  Moderator Board
-                </Link>
-              </li>
-            )}
-
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin Board
-                </Link>
-              </li>
-            )}
-
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
-            )}
-          </div>
-*/}
           {currentUser ? (
             <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                {/*<Link to={"/profile"} className="nav-link">*/}
-                <Link to={"/home"} className="nav-link">
-                  {currentUser.username}
-                 </Link>
-              </li>
-              <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
-                </a>
-              </li>
+              <div className="d-none d-lg-flex">
+                <li className="nav-item">
+                  {/*<Link to={"/profile"} className="nav-link">*/}
+                  <Link to={"/home"} className="nav-link">
+                    {currentUser.username}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a href="/login" className="nav-link" onClick={this.logOut}>
+                    LogOut
+                  </a>
+                </li>
+              </div>
             </div>
           ) : (
             <div className="navbar-nav ml-auto">
@@ -188,7 +224,8 @@ class App extends Component {
             <Route path="/quarta" element={<BetQuarta />} /> 
             <Route path="/semi" element={<BetSemi />} />                        
             <Route path="/final" element={<BetFinal />} /> 
-            <Route path="/ranking" element={<BetRanking />} />                        
+            <Route path="/ranking" element={<BetRanking />} />  
+            <Route path="/aposta/:username" element={<ApostaComponentWrapper />} />                        
           </Routes>
         </div>
 
