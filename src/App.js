@@ -27,6 +27,7 @@ import BetAposta from "./components/board-aposta.component";
 
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
+import RulesGame from "./components/RulesGame";
 
 
 class App extends Component {
@@ -51,7 +52,7 @@ class App extends Component {
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
       });
     }
-    
+
     EventBus.on("logout", () => {
       this.logOut();
     });
@@ -72,7 +73,7 @@ class App extends Component {
 
 
 
-  
+
   render() {
     const ApostaComponentWrapper = () => {
       const { username } = useParams();
@@ -82,27 +83,28 @@ class App extends Component {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
     return (
-      <div className="backgroundimage">
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <>
+        <div className="backgroundimage">
+          <nav className="navbar navbar-expand navbar-dark bg-dark">
 
-        {currentUser && (
-            <div className="d-lg-none">
-              <div className="navbar-nav ml-auto ">
-                <li className="nav-item">
-                  <div className="dropdown">
-                    <button 
-                        className="btn btn-secondary mr-1" 
-                        type="button" 
-                        id="dropdownMenuButton" 
-                        data-toggle="dropdown" 
+            {currentUser && (
+              <div className="d-lg-none">
+                <div className="navbar-nav ml-auto ">
+                  <li className="nav-item">
+                    <div className="dropdown">
+                      <button
+                        className="btn btn-secondary mr-1"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
                         aria-haspopup="true">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
 
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <Link to={"/grupo"} className="dropdown-item">
                           Grupos
-                        </Link>				  
+                        </Link>
                         <Link to={"/oitava"} className="dropdown-item">
                           Oitavas de final
                         </Link>
@@ -125,112 +127,117 @@ class App extends Component {
                         <a href="/login" className="dropdown-item" onClick={this.logOut}>
                           LogOut
                         </a>
+                      </div>
                     </div>
+                  </li>
+                </div>
+              </div>
+            )}
+
+
+            <Link to={"/"} className="navbar-brand">
+              BOLAODACOPA.TK
+            </Link>
+
+            {currentUser && (
+              <div>
+                <div className="d-none d-lg-block">
+                  <div className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                      <Link to={"/grupo"} className="nav-link">
+                        Grupos
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to={"/oitava"} className="nav-link">
+                        Oitavas de final
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to={"/quarta"} className="nav-link">
+                        Quartas de final
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to={"/semi"} className="nav-link">
+                        Semifinais
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to={"/final"} className="nav-link">
+                        Final
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to={"/ranking"} className="nav-link">
+                        <Icon.TrophyFill color="yellow" /> Ranking
+                      </Link>
+                    </li>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {currentUser ? (
+              <div className="navbar-nav ml-auto">
+                <div className="d-none d-lg-flex">
+                  <li className="nav-item">
+                    {/*<Link to={"/profile"} className="nav-link">*/}
+                    <Link to={"/home"} className="nav-link">
+                      {currentUser.username}
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <a href="/login" className="nav-link" onClick={this.logOut}>
+                      LogOut
+                    </a>
+                  </li>
+                </div>
+              </div>
+            ) : (
+              <div className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link to={"/login"} className="nav-link">
+                    Login
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link to={"/register"} className="nav-link">
+                    Sign Up
+                  </Link>
                 </li>
               </div>
-            </div>
-        )}
+            )}
+          </nav>
 
+          <div className="container mt-3">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/user" element={<BoardUser />} />
+              <Route path="/mod" element={<BoardModerator />} />
+              <Route path="/admin" element={<BoardAdmin />} />
+              <Route path="/grupo" element={<BetGrupo />} />
+              <Route path="/oitava" element={<BetOitava />} />
+              <Route path="/quarta" element={<BetQuarta />} />
+              <Route path="/semi" element={<BetSemi />} />
+              <Route path="/final" element={<BetFinal />} />
+              <Route path="/ranking" element={<BetRanking />} />
+              <Route path="/aposta/:username" element={<ApostaComponentWrapper />} />
+            </Routes>
+          </div>
 
-          <Link to={"/"} className="navbar-brand">
-            BOLAODACOPA.TK
-          </Link>
+          {/* <AuthVerify logOut={this.logOut}/> */}
 
-          {currentUser && (
-            <div>
-            <div className="d-none d-lg-block">
-              <div className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <Link to={"/grupo"} className="nav-link">
-                    Grupos
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={"/oitava"} className="nav-link">
-                    Oitavas de final
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={"/quarta"} className="nav-link">
-                    Quartas de final
-                  </Link>
-                </li> 
-                <li className="nav-item">
-                  <Link to={"/semi"} className="nav-link">
-                    Semifinais
-                  </Link>
-                </li> 
-                <li className="nav-item">
-                  <Link to={"/final"} className="nav-link">
-                    Final
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={"/ranking"} className="nav-link">
-                    <Icon.TrophyFill  color="yellow"/> Ranking
-                  </Link>
-                </li>                                                              
-              </div>
-            </div>
-            </div>
-          )}
-
-          {currentUser ? (
-            <div className="navbar-nav ml-auto">
-              <div className="d-none d-lg-flex">
-                <li className="nav-item">
-                  {/*<Link to={"/profile"} className="nav-link">*/}
-                  <Link to={"/home"} className="nav-link">
-                    {currentUser.username}
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a href="/login" className="nav-link" onClick={this.logOut}>
-                    LogOut
-                  </a>
-                </li>
-              </div>
-            </div>
-          ) : (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/login"} className="nav-link">
-                  Login
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Sign Up
-                </Link>
-              </li>
-            </div>
-          )}
-        </nav>
-
-        <div className="container mt-3">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/user" element={<BoardUser />} />
-            <Route path="/mod" element={<BoardModerator />} />
-            <Route path="/admin" element={<BoardAdmin />} />
-            <Route path="/grupo" element={<BetGrupo />} />  
-            <Route path="/oitava" element={<BetOitava />} />
-            <Route path="/quarta" element={<BetQuarta />} /> 
-            <Route path="/semi" element={<BetSemi />} />                        
-            <Route path="/final" element={<BetFinal />} /> 
-            <Route path="/ranking" element={<BetRanking />} />  
-            <Route path="/aposta/:username" element={<ApostaComponentWrapper />} />                        
-          </Routes>
         </div>
-
-        {/* <AuthVerify logOut={this.logOut}/> */}
-      </div>
+        {currentUser && (
+          <RulesGame />
+        )}
+      </>
     );
   }
 }
