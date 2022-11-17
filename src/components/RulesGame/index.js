@@ -49,7 +49,7 @@ export default function RulesGame() {
 
                                 <p>
                                     2) Após a data limite para palpites em cada fase, 
-                                    serão divulgados os palpites realizadas por todos os participantes.
+                                    serão divulgados os palpites realizados por todos os participantes.
                                 </p>
 
                                 <p>
