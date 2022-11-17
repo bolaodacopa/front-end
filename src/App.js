@@ -234,9 +234,7 @@ class App extends Component {
           {/* <AuthVerify logOut={this.logOut}/> */}
 
         </div>
-        {currentUser && (
-          <RulesGame />
-        )}
+        <RulesGame />
       </>
     );
   }

@@ -39,7 +39,7 @@ export default function RulesGame() {
                                     até às 18:00 horas do dia anterior ao início de cada fase.
                                     Data limite para cada fase abaixo:
                                     <ul>
-                                        <li>Fase de Grupos: 18/11/2022 às 18:00;</li>
+                                        <li>Fase de Grupos: 19/11/2022 às 18:00;</li>
                                         <li>Oitavas de final: 02/12/2022 às 18:00;</li> 
                                         <li>Quartas de final: 08/12/2022 às 18:00;</li>  
                                         <li>Semifinais: 12/12/2022 às 18:00;</li>  
@@ -49,7 +49,7 @@ export default function RulesGame() {
 
                                 <p>
                                     2) Após a data limite para palpites em cada fase, 
-                                    será divulgado as palpites realizadas por todos os participantes.
+                                    serão divulgados os palpites realizadas por todos os participantes.
                                 </p>
 
                                 <p>
