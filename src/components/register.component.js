@@ -127,6 +127,7 @@ export default class Register extends Component {
             (error.response &&
               error.response.data &&
               error.response.data.message) ||
+              error.response.data.error ||  
             error.message ||
             error.toString();
 

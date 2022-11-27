@@ -47,3 +47,7 @@ html {
   overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
 }
+
+.linkforgotpassword{
+  text-align: center;
+}

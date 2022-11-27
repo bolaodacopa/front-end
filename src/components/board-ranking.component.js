@@ -64,7 +64,7 @@ class BetRanking extends Component {
                                         <tr>
                                             <th class="text-center">#</th>
                                             <th class="text-center"></th>
-                                            <th>Nome</th>
+                                            <th>Participante</th>
                                             <th class="text-center">Pontos</th>
                                             <th class="text-center">Partidas corretas</th>
                                         </tr>

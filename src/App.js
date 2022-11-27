@@ -24,6 +24,9 @@ import BetSemi from "./components/board-semi.component";
 import BetFinal from "./components/board-final.component";
 import BetRanking from "./components/board-ranking.component";
 import BetAposta from "./components/board-aposta.component";
+import ForgotPassword from "./components/forgotpassword.component";
+import ResetPassword from "./components/resetpassword.component";
+import BetApostaPorJogo from "./components/board-apostaporjogo.component";
 
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
@@ -80,6 +83,11 @@ class App extends Component {
       return <BetAposta username={username} />;
     };
 
+    const ApostaPorJogoComponentWrapper = () => {
+      const { matchcode } = useParams();
+      return <BetApostaPorJogo matchcode={matchcode} />;
+    };
+
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
     return (
@@ -98,7 +106,7 @@ class App extends Component {
                         id="dropdownMenuButton"
                         data-toggle="dropdown"
                         aria-haspopup="true">
-                        <span class="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                       </button>
 
                       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -120,7 +128,7 @@ class App extends Component {
                         <Link to={"/ranking"} className="dropdown-item">
                           Ranking
                         </Link>
-                        <div class="dropdown-divider"></div>
+                        <div className="dropdown-divider"></div>
                         <Link to={"/home"} className="dropdown-item">
                           {currentUser.username}
                         </Link>
@@ -227,7 +235,10 @@ class App extends Component {
               <Route path="/semi" element={<BetSemi />} />
               <Route path="/final" element={<BetFinal />} />
               <Route path="/ranking" element={<BetRanking />} />
+              <Route path="/forgotpassword" element={<ForgotPassword />} />
+              <Route path="/resetpassword" element={<ResetPassword />} />
               <Route path="/aposta/:username" element={<ApostaComponentWrapper />} />
+              <Route path="/apostaporjogo/:matchcode" element={<ApostaPorJogoComponentWrapper />} />
             </Routes>
           </div>
 

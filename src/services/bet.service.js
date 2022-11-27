@@ -19,7 +19,11 @@ class BetService {
     getBetsMatchesByFinishedbetsUsername(username) {
         const params = {username: username};
         return API.get('bets/matches', { params: params, headers: authHeader() });
-    }    
+    }
+    
+    getBetsByMatchcode(matchcode) {
+        return API.get('bets/matches/'+matchcode, { headers: authHeader() });
+    }
 
     postBets(bets) {
         var contentType = {'Content-Type': 'application/json'};
