@@ -18,6 +18,7 @@ import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 import BetGrupo from "./components/board-grupo.component";
+import BetDezesseis from "./components/board-dezesseis.component";
 import BetOitava from "./components/board-oitava.component";
 import BetQuarta from "./components/board-quarta.component";
 import BetSemi from "./components/board-semi.component";
@@ -113,6 +114,9 @@ class App extends Component {
                         <Link to={"/grupo"} className="dropdown-item">
                           Grupos
                         </Link>
+                        <Link to={"/dezesseis"} className="dropdown-item">
+                          Dezesseis avos de final
+                        </Link>
                         <Link to={"/oitava"} className="dropdown-item">
                           Oitavas de final
                         </Link>
@@ -154,6 +158,11 @@ class App extends Component {
                     <li className="nav-item">
                       <Link to={"/grupo"} className="nav-link">
                         Grupos
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to={"/dezesseis"} className="nav-link">
+                        Dezesseis avos de final
                       </Link>
                     </li>
                     <li className="nav-item">
@@ -230,6 +239,7 @@ class App extends Component {
               <Route path="/mod" element={<BoardModerator />} />
               <Route path="/admin" element={<BoardAdmin />} />
               <Route path="/grupo" element={<BetGrupo />} />
+              <Route path="/dezesseis" element={<BetDezesseis />} />
               <Route path="/oitava" element={<BetOitava />} />
               <Route path="/quarta" element={<BetQuarta />} />
               <Route path="/semi" element={<BetSemi />} />
