@@ -20,6 +20,14 @@ function BetGrupo()  {
           <GrupoPartida name="Grupo G" group="G" stage="GRUPOS"/>
           <GrupoPartida name="Grupo H" group="H" stage="GRUPOS"/>
         </div>
+        <div class="row">
+          <GrupoPartida name="Grupo I" group="I" stage="GRUPOS"/>
+          <GrupoPartida name="Grupo J" group="J" stage="GRUPOS"/>
+        </div>
+        <div class="row">
+          <GrupoPartida name="Grupo K" group="K" stage="GRUPOS"/>
+          <GrupoPartida name="Grupo L" group="L" stage="GRUPOS"/>
+        </div>
       </div>
     );
 }
