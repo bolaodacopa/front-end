@@ -39,11 +39,12 @@ export default function RulesGame() {
                                     até às 18:00 horas do dia anterior ao início de cada fase.
                                     Data limite para cada fase abaixo:
                                     <ul>
-                                        <li>Fase de Grupos: 19/11/2022 às 18:00;</li>
-                                        <li>Oitavas de final: 02/12/2022 às 18:00;</li> 
-                                        <li>Quartas de final: 08/12/2022 às 18:00;</li>  
-                                        <li>Semifinais: 12/12/2022 às 18:00;</li>  
-                                        <li>Fase Final: 16/12/2022 às 18:00;</li>
+                                        <li>Grupos: 10/06/2026 às 18:00;</li>
+                                        <li>Dezesseis avos de final: 23/06/2026 às 18:00;</li> 
+                                        <li>Oitavas de final: 03/07/2026 às 18:00;</li>  
+                                        <li>Quartas de final: 08/07/2026 às 18:00;</li>  
+                                        <li>Semifinal: 13/07/2026 às 18:00;</li>  
+                                        <li>Final (Terceiro Lugar e Final): 17/07/2026 às 18:00;</li>
                                     </ul>
                                 </p>
 
