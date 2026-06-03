@@ -148,7 +148,7 @@ class App extends Component {
 
 
             <Link to={"/"} className="navbar-brand">
-              BOLAODACOPA.TK
+              BOLAODACOPA
             </Link>
 
             {currentUser && (
