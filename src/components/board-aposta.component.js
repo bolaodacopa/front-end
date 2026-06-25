@@ -75,9 +75,10 @@ class BetAposta extends Component {
 
                                             {this.state.content.map((item, index) => {
                                                 var fase = "";
+                                                fase = 'Dezesseis avos'
                                                 if (item.match.stage.name == 'GRUPOS') fase = 'Grupos'
-                                                if (item.match.stage.name == 'OITAVASFINAL') fase = 'Oitavas de final'
-                                                if (item.match.stage.name == 'QUARTASFINAL') fase = 'Quartas de final'
+                                                if (item.match.stage.name == 'OITAVASFINAL') fase = 'Oitavas'
+                                                if (item.match.stage.name == 'QUARTASFINAL') fase = 'Quartas'
                                                 if (item.match.stage.name == 'SEMIFINAL') fase = 'Semifinais'
                                                 if (item.match.stage.name == 'TERCEIRO') fase = 'Terceiro lugar'
                                                 if (item.match.stage.name == 'FINAL') fase = 'Final'

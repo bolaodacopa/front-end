@@ -48,9 +48,10 @@ class BetApostaPorJogo extends Component {
             console.log(match.id);
 
 
+            fase = 'Dezesseis avos'
             if (match.stage.name == 'GRUPOS') fase = 'Grupos'
-            if (match.stage.name == 'OITAVASFINAL') fase = 'Oitavas de final'
-            if (match.stage.name == 'QUARTASFINAL') fase = 'Quartas de final'
+            if (match.stage.name == 'OITAVASFINAL') fase = 'Oitavas'
+            if (match.stage.name == 'QUARTASFINAL') fase = 'Quartas'
             if (match.stage.name == 'SEMIFINAL') fase = 'Semifinais'
             if (match.stage.name == 'TERCEIRO') fase = 'Terceiro lugar'
             if (match.stage.name == 'FINAL') fase = 'Final'
@@ -146,6 +147,7 @@ class BetApostaPorJogo extends Component {
 
                                                 )
                                             })}
+
 
 
 
